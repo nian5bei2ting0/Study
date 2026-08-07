@@ -1,0 +1,419 @@
+#fr-report-debug-ball {
+    position: fixed;
+    right: 20px;
+    bottom: 90px;
+    z-index: 100000;
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+    background: linear-gradient(135deg, #5b6af0, #7c4dff);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(91, 106, 240, 0.45);
+    user-select: none;
+    font-family: "Microsoft YaHei", "Segoe UI", sans-serif;
+}
+
+#fr-report-debug-mask {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+#fr-report-debug-dialog {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100002;
+    width: 640px;
+    max-width: calc(100vw - 24px);
+    height: 100vh;
+    height: 100dvh;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: -4px 0 24px rgba(0, 0, 0, 0.12);
+    flex-direction: column;
+    font-family: "Microsoft YaHei", "Consolas", "Segoe UI", sans-serif;
+    font-size: 13px;
+    color: #333;
+    overflow: hidden;
+}
+
+#fr-report-debug-dialog.fr-rda-fullscreen {
+    left: 0;
+    width: 100vw;
+    max-width: none;
+    box-shadow: none;
+}
+
+#fr-report-debug-dialog.fr-rda-visible,
+#fr-report-debug-mask.fr-rda-visible {
+    display: flex;
+}
+
+#fr-rda-header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+#fr-rda-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #5b4fc7;
+    letter-spacing: 0.5px;
+}
+
+#fr-rda-header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+#fr-rda-header-actions button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    color: #666;
+    padding: 0;
+}
+
+#fr-rda-header-actions button:hover {
+    border-color: #5b6af0;
+    color: #5b6af0;
+}
+
+#fr-rda-body {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 14px 18px;
+    background: #fff;
+    line-height: 1.65;
+}
+
+#fr-rda-body .rda-line {
+    margin: 2px 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#fr-rda-body .rda-report-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+#fr-rda-body .rda-meta {
+    color: #555;
+}
+
+#fr-rda-body .rda-section-title {
+    margin-top: 10px;
+    color: #333;
+    font-weight: 600;
+}
+
+#fr-rda-body .rda-param {
+    padding-left: 12px;
+    color: #444;
+}
+
+#fr-rda-body .rda-sql-wrap.rda-sql-collapsed .rda-sql-block {
+    display: none;
+}
+
+#fr-rda-body .rda-sql-wrap.rda-sql-collapsed .rda-sql-toolbar {
+    border-bottom: none;
+}
+
+#fr-rda-body .rda-sql-wrap {
+    margin: 6px 0 14px 0;
+    border: 1px solid #e8eaf3;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f7f8fc;
+}
+
+#fr-rda-body .rda-sql-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 10px;
+    background: #eef0f8;
+    border-bottom: 1px solid #e8eaf3;
+}
+
+#fr-rda-body .rda-sql-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+}
+
+#fr-rda-body .rda-sql-toggle:hover .rda-sql-toolbar-label {
+    color: #5b6af0;
+}
+
+#fr-rda-body .rda-sql-toggle-icon {
+    display: inline-block;
+    width: 12px;
+    font-size: 10px;
+    color: #888;
+    transition: transform 0.15s ease;
+    flex-shrink: 0;
+}
+
+#fr-rda-body .rda-sql-wrap.rda-sql-expanded .rda-sql-toggle-icon {
+    transform: rotate(90deg);
+}
+
+#fr-rda-body .rda-sql-toolbar-label {
+    font-size: 12px;
+    color: #555;
+    font-weight: 600;
+}
+
+#fr-rda-body .rda-sql-mask-hint {
+    font-size: 11px;
+    color: #888;
+    font-weight: normal;
+}
+
+#fr-rda-body .rda-sql-copy-btn {
+    min-width: 52px;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 24px;
+    flex-shrink: 0;
+}
+
+#fr-rda-body .rda-sql-copy-btn:hover {
+    border-color: #5b6af0;
+    color: #5b6af0;
+}
+
+#fr-rda-body .rda-sql-copy-btn.rda-copied {
+    border-color: #52c41a;
+    color: #52c41a;
+}
+
+#fr-rda-body .rda-sql-block {
+    margin: 0;
+    padding: 10px 12px;
+    background: #f7f8fc;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+#fr-rda-body .rda-deps-wrap.rda-deps-collapsed .rda-deps-block {
+    display: none;
+}
+
+#fr-rda-body .rda-deps-wrap.rda-deps-collapsed .rda-deps-toolbar {
+    border-bottom: none;
+}
+
+#fr-rda-body .rda-deps-wrap {
+    margin: 0 0 14px 0;
+    border: 1px solid #e8eaf3;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #fafbfe;
+}
+
+#fr-rda-body .rda-deps-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 6px 10px;
+    background: #eef0f8;
+    border-bottom: 1px solid #e8eaf3;
+}
+
+#fr-rda-body .rda-deps-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: inherit;
+}
+
+#fr-rda-body .rda-deps-toggle:hover .rda-deps-toolbar-label {
+    color: #5b6af0;
+}
+
+#fr-rda-body .rda-deps-toggle-icon {
+    display: inline-block;
+    width: 12px;
+    font-size: 10px;
+    color: #888;
+    transition: transform 0.15s ease;
+}
+
+#fr-rda-body .rda-deps-wrap.rda-deps-expanded .rda-deps-toggle-icon {
+    transform: rotate(90deg);
+}
+
+#fr-rda-body .rda-deps-toolbar-label {
+    font-size: 12px;
+    color: #555;
+    font-weight: 600;
+}
+
+#fr-rda-body .rda-deps-count {
+    font-size: 12px;
+    color: #888;
+    font-weight: normal;
+}
+
+#fr-rda-body .rda-deps-copy-btn {
+    min-width: 52px;
+    height: 26px;
+    padding: 0 10px;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    line-height: 24px;
+    flex-shrink: 0;
+}
+
+#fr-rda-body .rda-deps-copy-btn:hover {
+    border-color: #5b6af0;
+    color: #5b6af0;
+}
+
+#fr-rda-body .rda-deps-copy-btn.rda-copied {
+    border-color: #52c41a;
+    color: #52c41a;
+}
+
+#fr-rda-body .rda-deps-block {
+    padding: 10px 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+#fr-rda-body .rda-deps-tag {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #d9dff0;
+    color: #333;
+    font-size: 12px;
+    line-height: 1.6;
+    font-family: Consolas, "Courier New", monospace;
+    word-break: break-all;
+}
+
+#fr-rda-body .rda-deps-empty {
+    color: #888;
+    font-size: 12px;
+}
+
+#fr-rda-body .sql-kw {
+    color: #0033b3;
+    font-weight: 600;
+}
+
+#fr-rda-body .rda-loading,
+#fr-rda-body .rda-error {
+    color: #888;
+    text-align: center;
+    padding: 40px 0;
+}
+
+#fr-rda-body .rda-error {
+    color: #c62828;
+}
+
+#fr-rda-footer {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 12px 16px;
+    border-top: 1px solid #e8e8e8;
+    background: #fafafa;
+}
+
+#fr-rda-footer button {
+    min-width: 72px;
+    height: 32px;
+    padding: 0 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+#fr-rda-btn-export {
+    background: #5b6af0;
+    color: #fff;
+    border: 1px solid #5b6af0;
+}
+
+#fr-rda-btn-export:hover {
+    background: #4a59e0;
+}
+
+#fr-rda-btn-copy {
+    background: #fff;
+    color: #333;
+    border: 1px solid #d9d9d9;
+}
+
+#fr-rda-btn-copy:hover {
+    border-color: #5b6af0;
+    color: #5b6af0;
+}

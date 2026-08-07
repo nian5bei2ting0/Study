@@ -1,0 +1,7 @@
+/target/
+/.tmp-*/
+/_extracted_core/
+/com/
+*.class
+*.jar
+!finereport11/*.jar

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.plugin.report.debug.assistant</id>
+    <name><![CDATA[数据集调试助手]]></name>
+    <active>yes</active>
+    <version>1.0.9</version>
+    <env-version>11.0~11.0</env-version>
+    <vendor email="dev@local">sql_debug</vendor>
+    <jartime>2023-08-08</jartime>
+    <description><![CDATA[报表预览页数据集/SQL 调试快照，决策平台可配置权限与脱敏。]]></description>
+    <change-notes><![CDATA[1.0.9 查询SQL默认收起，点击展开查看；1.0.8 数据集依赖收起/复制；1.0.7 嵌套子查询依赖解析。]]></change-notes>
+    <main-package>com.fr.plugin.report.debug</main-package>
+    <prefer-packages>com.fr.plugin.report.debug</prefer-packages>
+    <function-recorder class="com.fr.plugin.report.debug.decision.DebugAssistantSystemOption"/>
+    <plugin-xml-i18n resource="fr-plugin-report-debug-assistant" location="com.fr.plugin.report.debug.locale">
+        <name key="Fine-Plugin_Report_Debug_Assistant"/>
+        <description key="Plugin-Report_Debug_Assistant_Description"/>
+        <change-notes key="Plugin-Report_Debug_Assistant_Change_Notes"/>
+    </plugin-xml-i18n>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.report.debug.locale.DebugAssistantLocaleFinder"/>
+        <WebService class="com.fr.plugin.report.debug.web.ReportDebugWebService"/>
+    </extra-core>
+    <extra-report>
+        <JavaScriptFileHandler class="com.fr.plugin.report.debug.web.ReportDebugJsHandler"/>
+        <CssFileHandler class="com.fr.plugin.report.debug.web.ReportDebugCssHandler"/>
+        <SessionCachedDataModelProcessor class="com.fr.plugin.report.debug.core.fetch.DebugSessionCachedDataModelProcessor"/>
+        <DataModelFillProcessor class="com.fr.plugin.report.debug.core.fetch.DebugDataModelFillProcessor"/>
+    </extra-report>
+    <extra-decision>
+        <SystemOptionProvider class="com.fr.plugin.report.debug.decision.DebugAssistantSystemOption"/>
+        <WebResourceProvider class="com.fr.plugin.report.debug.decision.DebugAssistantWebResourceBridge"/>
+        <ControllerRegisterProvider class="com.fr.plugin.report.debug.decision.DebugAssistantControllerRegister"/>
+    </extra-decision>
+</plugin>
