@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fr.plugin</groupId>
+    <artifactId>online-save</artifactId>
+    <version>1.0.6</version>
+    <packaging>jar</packaging>
+    <name>online-save</name>
+    <description>FineReport directory-management save (entry tree cache refresh) API</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <fr.lib.dir>${project.basedir}/finereport11</fr.lib.dir>
+        <fr.plugin.id>com.fr.plugin.online.save</fr.plugin.id>
+        <fr.plugin.deploy.dir>${project.build.directory}/plugin-${fr.plugin.id}-${project.version}</fr.plugin.deploy.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-core</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-core-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-decision</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-decision-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-decision-report</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-decision-report-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-cbb</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-cbb-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-third</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-third-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>online-save-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>assemble-plugin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${fr.plugin.deploy.dir}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                      todir="${fr.plugin.deploy.dir}"
+                                      overwrite="true"/>
+                                <copy file="${project.basedir}/plugin.xml"
+                                      todir="${fr.plugin.deploy.dir}"
+                                      overwrite="true"/>
+                                <echo message="Assembled plugin to ${fr.plugin.deploy.dir}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

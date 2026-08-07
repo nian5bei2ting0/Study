@@ -1,0 +1,5 @@
+com\fr\plugin\online\save\core\OnlineSaveConstants.class
+com\fr\plugin\online\save\decision\OnlineSaveDirectoryResource.class
+com\fr\plugin\online\save\service\DirectorySaveService.class
+com\fr\plugin\online\save\decision\OnlineSaveControllerRegister.class
+com\fr\plugin\online\save\locale\OnlineSaveLocaleFinder.class

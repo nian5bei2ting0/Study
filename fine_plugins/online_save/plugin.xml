@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.plugin.online.save</id>
+    <name><![CDATA[目录管理在线保存]]></name>
+    <active>yes</active>
+    <version>1.0.6</version>
+    <env-version>11.0~11.0</env-version>
+    <vendor email="dev@local">online_save</vendor>
+    <jartime>2023-08-08</jartime>
+    <description><![CDATA[提供接口模拟决策平台「目录管理」点击保存：刷新目录树缓存，使自动化挂载的新报表立即可见。新增按 displayName 查询 entryId 接口。]]></description>
+    <change-notes><![CDATA[1.0.6 新增 GET /entry/lookup?displayName=xxx，按显示名查询 fine_authority_object 返回 entryId。]]></change-notes>
+    <main-package>com.fr.plugin.online.save</main-package>
+    <prefer-packages>com.fr.plugin.online.save</prefer-packages>
+    <function-recorder class="com.fr.plugin.online.save.locale.OnlineSaveLocaleFinder"/>
+    <plugin-xml-i18n resource="fr-plugin-online-save" location="com.fr.plugin.online.save.locale">
+        <name key="Fine-Plugin_Online_Save"/>
+        <description key="Plugin-Online_Save_Description"/>
+        <change-notes key="Plugin-Online_Save_Change_Notes"/>
+    </plugin-xml-i18n>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.online.save.locale.OnlineSaveLocaleFinder"/>
+    </extra-core>
+    <extra-decision>
+        <ControllerRegisterProvider class="com.fr.plugin.online.save.decision.OnlineSaveControllerRegister"/>
+    </extra-decision>
+</plugin>

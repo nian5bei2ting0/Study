@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <mkdir dir="E:\AI\cursor\fine_plugins\online_save\target/plugin-com.fr.plugin.online.save-1.0.6" />
+    <copy file="E:\AI\cursor\fine_plugins\online_save\target/online-save-1.0.6.jar" todir="E:\AI\cursor\fine_plugins\online_save\target/plugin-com.fr.plugin.online.save-1.0.6" overwrite="true" />
+    <copy file="E:\AI\cursor\fine_plugins\online_save/plugin.xml" todir="E:\AI\cursor\fine_plugins\online_save\target/plugin-com.fr.plugin.online.save-1.0.6" overwrite="true" />
+    <echo message="Assembled plugin to E:\AI\cursor\fine_plugins\online_save\target/plugin-com.fr.plugin.online.save-1.0.6" />
+  </target>
+</project>
