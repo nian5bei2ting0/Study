@@ -1,0 +1,315 @@
+#configAppShell.hide {
+  display: none;
+}
+
+.config-page-main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-bottom: 48px;
+}
+
+.config-page-title {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.config-page-desc {
+  margin: 0 0 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.config-nav-center-start {
+  justify-content: flex-start;
+}
+
+.config-back-link.breadcrumb {
+  text-decoration: none;
+  color: inherit;
+}
+
+.config-nav-badge {
+  margin: 0;
+}
+
+.config-desc-code {
+  color: #67e8f9;
+}
+
+.config-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.config-toolbar a,
+.config-toolbar button {
+  font-size: 13px;
+}
+
+.config-btn {
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.65);
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.config-btn:hover {
+  background: rgba(148, 163, 184, 0.12);
+  border-color: rgba(6, 182, 212, 0.45);
+}
+
+.config-btn-primary {
+  border-color: rgba(6, 182, 212, 0.55);
+  background: rgba(6, 182, 212, 0.2);
+  color: #ecfeff;
+}
+
+.config-btn-primary:hover {
+  background: rgba(6, 182, 212, 0.32);
+}
+
+.config-btn-danger {
+  border-color: rgba(248, 113, 113, 0.45);
+  color: #fecaca;
+}
+
+.config-primary-card {
+  margin-bottom: 16px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.config-primary-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.config-primary-head h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.config-field-grid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .config-field-grid.cols-2 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .config-field-grid.cols-2 > .config-field:nth-child(3),
+  .config-field-grid.cols-2 > .config-field.config-field-checkbox {
+    grid-column: 1 / -1;
+  }
+}
+
+.config-checkbox-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  user-select: none;
+}
+
+.config-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  accent-color: #06b6d4;
+  cursor: pointer;
+}
+
+.config-field label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.config-field input,
+.config-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.85);
+  color: var(--text-primary);
+  font-size: 13px;
+}
+
+.config-field input:focus,
+.config-field select:focus {
+  outline: none;
+  border-color: rgba(6, 182, 212, 0.55);
+  box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.15);
+}
+
+.config-field input::placeholder,
+.config-sub-table input::placeholder {
+  color: rgba(148, 163, 184, 0.55);
+}
+
+.config-url-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-url-row > input[type="text"] {
+  flex: 1;
+  min-width: 0;
+}
+
+.config-external-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.config-external-check input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin: 0;
+  accent-color: #06b6d4;
+  cursor: pointer;
+}
+
+.config-field-hidden-key {
+  display: none;
+}
+
+.config-icon-select-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.config-icon-preview {
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: rgba(15, 23, 42, 0.85);
+  color: #67e8f9;
+  font-size: 16px;
+}
+
+.config-icon-select-row select {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.config-field-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.config-sub-head {
+  margin: 18px 0 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.config-sub-table-wrap {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.config-sub-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.config-sub-table th {
+  text-align: left;
+  padding: 8px 10px;
+  background: rgba(15, 23, 42, 0.9);
+  color: #94a3b8;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.config-sub-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  vertical-align: middle;
+}
+
+.config-sub-table td input {
+  width: 100%;
+  min-width: 160px;
+  box-sizing: border-box;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.75);
+  color: var(--text-primary);
+  font-size: 12px;
+}
+
+.config-sub-table .col-actions {
+  width: 72px;
+  text-align: right;
+}
+
+.config-msg {
+  display: block;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.config-msg.success {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: #bbf7d0;
+}
+
+.config-msg.error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #fecaca;
+}
+
+.config-msg.hide {
+  display: none;
+}

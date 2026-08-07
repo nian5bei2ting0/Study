@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.plugin.czcb.homepage</id>
+    <name><![CDATA[综合大屏首页]]></name>
+    <active>yes</active>
+    <version>1.0.11</version>
+    <env-version>11.0~11.0</env-version>
+    <vendor email="dev@local">czcb_homepage</vendor>
+    <jartime>2023-08-08</jartime>
+    <description><![CDATA[嵌入综合大屏首页：安装后将 index.html 挂载到决策平台目录管理，config.html 作为插件配置页；菜单配置服务端持久化。]]></description>
+    <change-notes><![CDATA[1.0.11：修复切换浏览器标签导致首页报表被重新加载。]]></change-notes>
+    <main-package>com.fr.plugin.czcb.homepage</main-package>
+    <prefer-packages>com.fr.plugin.czcb.homepage</prefer-packages>
+    <function-recorder class="com.fr.plugin.czcb.homepage.decision.CzcbHomepageSystemOption"/>
+    <plugin-xml-i18n resource="fr-plugin-czcb-homepage" location="com.fr.plugin.czcb.homepage.locale">
+        <name key="Fine-Plugin_Czcb_Homepage"/>
+        <description key="Plugin-Czcb_Homepage_Description"/>
+        <change-notes key="Plugin-Czcb_Homepage_Change_Notes"/>
+    </plugin-xml-i18n>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.czcb.homepage.locale.CzcbHomepageLocaleFinder"/>
+        <WebService class="com.fr.plugin.czcb.homepage.web.CzcbHomepageWebService"/>
+    </extra-core>
+    <extra-decision>
+        <SystemOptionProvider class="com.fr.plugin.czcb.homepage.decision.CzcbHomepageSystemOption"/>
+        <WebResourceProvider class="com.fr.plugin.czcb.homepage.decision.CzcbHomepageWebResourceBridge"/>
+        <ControllerRegisterProvider class="com.fr.plugin.czcb.homepage.decision.CzcbHomepageControllerRegister"/>
+        <DecisionInitEventProvider class="com.fr.plugin.czcb.homepage.decision.CzcbHomepageInitEvent"/>
+    </extra-decision>
+</plugin>

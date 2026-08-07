@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fr.plugin</groupId>
+    <artifactId>czcb-homepage</artifactId>
+    <version>1.0.11</version>
+    <packaging>jar</packaging>
+    <name>czcb-homepage</name>
+    <description>CZCB FineReport homepage plugin with directory link and menu config</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <fr.lib.dir>${project.basedir}/finereport11</fr.lib.dir>
+        <fr.plugin.id>com.fr.plugin.czcb.homepage</fr.plugin.id>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-core</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-core-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-report-engine</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-report-engine-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-decision</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-decision-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-decision-report</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-decision-report-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-cbb</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-cbb-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-datasource</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-datasource-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-third</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-third-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>czcb-homepage-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>assemble-plugin-dir</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                      todir="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}"
+                                      overwrite="true"/>
+                                <copy file="${project.basedir}/plugin.xml"
+                                      todir="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}"
+                                      overwrite="true"/>
+                                <zip destfile="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}.zip"
+                                     basedir="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}"/>
+                                <echo message="Plugin zip: ${project.build.directory}/plugin-${fr.plugin.id}-${project.version}.zip"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

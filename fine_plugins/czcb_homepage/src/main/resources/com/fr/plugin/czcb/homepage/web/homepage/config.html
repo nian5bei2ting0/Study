@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>导航菜单配置</title>
+  <link rel="stylesheet" href="./vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/config-page.css">
+</head>
+<body>
+  <div id="configAppShell">
+    <header class="top-header">
+      <nav class="nav-shell" aria-label="配置页导航">
+        <section class="nav-center config-nav-center-start">
+          <a href="./index.html" class="breadcrumb config-back-link" target="_blank" rel="noopener">
+            <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+            <span>打开首页</span>
+          </a>
+        </section>
+        <section class="nav-right">
+          <span class="breadcrumb config-nav-badge"><i class="fa-solid fa-sliders" aria-hidden="true"></i> 菜单与报表 URL</span>
+        </section>
+      </nav>
+    </header>
+
+    <main class="content-area config-page-main">
+      <h1 class="config-page-title">导航菜单配置</h1>
+      <p class="config-page-desc">
+        安装后无内置菜单与示例 URL，请自行添加<strong>一级目录</strong>、<strong>报表 URL</strong>与<strong>二级目录</strong>。
+        唯一标识自动生成；图标通过下拉框选择。配置保存到<strong>服务器</strong>（组织级共享），并缓存到本机 localStorage。
+        报表 URL 默认仅允许以 <code class="config-desc-code">/</code> 开头的站内路径。
+      </p>
+
+      <div class="config-toolbar">
+        <button type="button" class="config-btn config-btn-primary" id="btnAddPrimary">添加一级目录</button>
+        <button type="button" class="config-btn" id="btnSave">保存配置</button>
+        <button type="button" class="config-btn" id="btnReloadFromSaved">重新载入已保存</button>
+        <button type="button" class="config-btn" id="btnClearConfig">清空配置</button>
+      </div>
+
+      <div id="configMsg" class="config-msg hide" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true"></div>
+
+      <div id="configRoot" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script src="./js/menu-config-api.js"></script>
+  <script src="./js/menu-config-page.js"></script>
+</body>
+</html>

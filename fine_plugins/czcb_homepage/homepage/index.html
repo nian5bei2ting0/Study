@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>综合大屏首页导航栏</title>
+  <link rel="stylesheet" href="./vendor/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/component.css">
+</head>
+<body>
+  <header class="top-header" id="topHeader">
+    <nav class="nav-shell" aria-label="银行综合导航">
+      <section class="nav-center" aria-label="核心功能导航">
+        <ul class="menu-list" id="menuList"></ul>
+      </section>
+      <section class="nav-right" aria-label="当前路径">
+        <p class="breadcrumb" id="breadcrumbPath">
+          <i class="fa-solid fa-location-arrow" aria-hidden="true"></i>
+          <span>当前：未选择</span>
+        </p>
+      </section>
+    </nav>
+  </header>
+
+  <main class="content-area">
+    <section class="report-shell" aria-label="帆软报表展示区">
+      <iframe id="reportFrame" title="帆软报表内容"></iframe>
+      <div class="report-empty" id="reportEmpty">请选择二级目录以加载帆软报表</div>
+      <div class="report-loading hide" id="reportLoading">
+        <i class="fa-solid fa-spinner"></i>
+        <span>报表加载中，请稍候...</span>
+      </div>
+      <div class="report-error hide" id="reportError">
+        <p>报表加载失败，请检查帆软地址或网络连接。</p>
+        <button type="button" id="retryReportBtn">重新加载</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/menu-config-api.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
