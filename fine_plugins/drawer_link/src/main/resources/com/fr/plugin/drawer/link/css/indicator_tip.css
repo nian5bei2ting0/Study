@@ -1,0 +1,362 @@
+.fr-indicator-tip {
+
+    position: fixed;
+
+    z-index: 100001;
+
+    max-width: 360px;
+
+    min-width: 120px;
+
+    padding: 12px 14px;
+
+    border-radius: 6px;
+
+    border: 1px solid transparent;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+
+    white-space: pre-wrap;
+
+    word-break: break-word;
+
+    line-height: 1.55;
+
+    box-sizing: border-box;
+
+    pointer-events: none;
+
+}
+
+
+
+.fr-indicator-tip.fr-tip-interactive {
+
+    pointer-events: auto;
+
+}
+
+
+
+.fr-indicator-tip-copy {
+
+    display: inline-block;
+
+    margin: 0 0 10px 0;
+
+    padding: 2px 10px;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+
+    border-radius: 4px;
+
+    border: 1px solid currentColor;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    outline: none;
+
+    font-family: inherit;
+
+}
+
+
+
+.fr-indicator-tip-copy:hover {
+
+    opacity: 0.85;
+
+}
+
+
+
+.fr-indicator-tip-copy.is-copied {
+
+    opacity: 0.7;
+
+}
+
+
+
+.fr-indicator-tip-body {
+
+    display: block;
+
+}
+
+
+
+/* 箭头：默认指向左侧（气泡在单元格右侧） */
+
+.fr-indicator-tip::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+
+    height: 0;
+
+    border-style: solid;
+
+}
+
+
+
+.fr-indicator-tip.fr-tip-right::before {
+
+    left: -7px;
+
+    top: var(--fr-tip-arrow-top, 50%);
+
+    margin-top: -7px;
+
+    border-width: 7px 7px 7px 0;
+
+    border-color: transparent var(--fr-tip-arrow-border, currentColor) transparent transparent;
+
+}
+
+
+
+.fr-indicator-tip.fr-tip-right::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -6px;
+
+    top: var(--fr-tip-arrow-top, 50%);
+
+    margin-top: -6px;
+
+    width: 0;
+
+    height: 0;
+
+    border-style: solid;
+
+    border-width: 6px 6px 6px 0;
+
+    border-color: transparent var(--fr-tip-arrow-fill, currentColor) transparent transparent;
+
+}
+
+
+
+.fr-indicator-tip.fr-tip-left::before {
+
+    right: -7px;
+
+    top: var(--fr-tip-arrow-top, 50%);
+
+    margin-top: -7px;
+
+    border-width: 7px 0 7px 7px;
+
+    border-color: transparent transparent transparent var(--fr-tip-arrow-border, currentColor);
+
+}
+
+
+
+.fr-indicator-tip.fr-tip-left::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: -6px;
+
+    top: var(--fr-tip-arrow-top, 50%);
+
+    margin-top: -6px;
+
+    width: 0;
+
+    height: 0;
+
+    border-style: solid;
+
+    border-width: 6px 0 6px 6px;
+
+    border-color: transparent transparent transparent var(--fr-tip-arrow-fill, currentColor);
+
+}
+
+
+
+/* —— 内置样式 —— */
+
+.fr-indicator-tip.fr-style-darkCyan {
+
+    background: #1A1F2C;
+
+    color: #FFFFFF;
+
+    border-color: #3EC6FF;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(62, 198, 255, 0.15);
+
+    --fr-tip-arrow-border: #3EC6FF;
+
+    --fr-tip-arrow-fill: #1A1F2C;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-darkCyan .fr-indicator-tip-copy {
+
+    color: #3EC6FF;
+
+    border-color: #3EC6FF;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-darkSimple {
+
+    background: #2B2B2B;
+
+    color: #F5F5F5;
+
+    border-color: #555555;
+
+    --fr-tip-arrow-border: #555555;
+
+    --fr-tip-arrow-fill: #2B2B2B;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-darkSimple .fr-indicator-tip-copy {
+
+    color: #DDDDDD;
+
+    border-color: #888888;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-lightWarm {
+
+    background: #FFF8E6;
+
+    color: #333333;
+
+    border-color: rgba(0, 0, 0, 0.08);
+
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+
+    --fr-tip-arrow-border: rgba(0, 0, 0, 0.12);
+
+    --fr-tip-arrow-fill: #FFF8E6;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-lightWarm .fr-indicator-tip-copy {
+
+    color: #8A6D3B;
+
+    border-color: #D6B56A;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-lightInfo {
+
+    background: #F0F7FF;
+
+    color: #1F3A5F;
+
+    border-color: #8EBBF0;
+
+    --fr-tip-arrow-border: #8EBBF0;
+
+    --fr-tip-arrow-fill: #F0F7FF;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-lightInfo .fr-indicator-tip-copy {
+
+    color: #2F6FB5;
+
+    border-color: #8EBBF0;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-success {
+
+    background: #F3FAF4;
+
+    color: #1F5A2E;
+
+    border-color: #6FBF7B;
+
+    --fr-tip-arrow-border: #6FBF7B;
+
+    --fr-tip-arrow-fill: #F3FAF4;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-success .fr-indicator-tip-copy {
+
+    color: #2E7D3E;
+
+    border-color: #6FBF7B;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-warning {
+
+    background: #FFF6ED;
+
+    color: #7A3E12;
+
+    border-color: #F0A060;
+
+    --fr-tip-arrow-border: #F0A060;
+
+    --fr-tip-arrow-fill: #FFF6ED;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-warning .fr-indicator-tip-copy {
+
+    color: #C05A1A;
+
+    border-color: #F0A060;
+
+}
+
+
+
+.fr-indicator-tip.fr-style-custom {
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+}
+

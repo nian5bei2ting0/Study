@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<plugin>
+    <id>com.fr.plugin.drawer.link</id>
+    <name><![CDATA[抽屉报表与指标提示超链接]]></name>
+    <active>yes</active>
+    <hidden>no</hidden>
+    <version>1.0.12</version>
+    <env-version>11.0~11.0</env-version>
+    <jartime>2023-08-08</jartime>
+    <vendor>drawer_link</vendor>
+    <description><![CDATA[在设计器超级链接中新增「抽屉报表」「指标提示」。抽屉报表支持网络报表、方向、参数、传参方式；指标提示支持内置样式、复制按钮、字体等配置。]]></description>
+    <change-notes><![CDATA[
+    <p>[2026-07-16] 取消指标提示内容必填校验</p>
+    <p>[2026-07-12] 修复提示空白页：恢复 textNode 持久化，公式改为安全求值</p>
+    <p>[2026-07-12] 彻底修复公式导致整页空白：公式改字符串安全求值</p>
+    <p>[2026-07-12] 修复指标提示公式导致整页空白</p>
+    <p>[2026-07-12] 修复指标提示公式内容预览为空</p>
+    <p>[2026-07-12] 指标提示内容支持公式</p>
+    <p>[2026-07-12] 指标提示：气泡箭头样式、可配置复制按钮、内置多套提示框样式</p>
+    <p>[2026-07-12] 优化指标提示定位：按单元格锚定，避免上下单元格偏差</p>
+    <p>[2026-07-12] 指标提示改为鼠标悬浮自动显示</p>
+    <p>[2026-07-12] 新增超级链接类型「指标提示」</p>
+    <p>[2026-07-12] 修复 POST 传参新开页：改为 iframe 内表单提交</p>
+    <p>[2026-07-12] 新增参数传递方式 GET/POST 选择</p>
+    <p>[2026-07-12] 修复 FR 覆盖与新开页问题；路径/尺寸校验；标题持久化</p>
+    <p>[2026-07-12] 首次发布：超级链接类型「抽屉报表」</p>
+    ]]></change-notes>
+    <main-package>com.fr.plugin.drawer.link</main-package>
+    <prefer-packages>com.fr.plugin.drawer.link</prefer-packages>
+    <function-recorder class="com.fr.plugin.drawer.link.locale.DrawerLocaleFinder"/>
+    <extra-core>
+        <LocaleFinder class="com.fr.plugin.drawer.link.locale.DrawerLocaleFinder"/>
+    </extra-core>
+    <extra-report>
+        <JavaScriptFileHandler class="com.fr.plugin.drawer.link.js.DrawerJavaScriptFileHandler"/>
+        <CssFileHandler class="com.fr.plugin.drawer.link.css.DrawerCssFileHandler"/>
+    </extra-report>
+    <extra-designer>
+        <HyperlinkProvider class="com.fr.plugin.drawer.link.DrawerReportHyperlinkProvider"/>
+        <HyperlinkProvider class="com.fr.plugin.drawer.link.IndicatorTipHyperlinkProvider"/>
+    </extra-designer>
+    <plugin-xml-i18n resource="drawer" location="com.fr.plugin.drawer.link.locale">
+        <name key="Plugin-Xml-I18n-Drawer_Name"/>
+        <description key="Plugin-Xml-I18n-Drawer_Description"/>
+        <change-notes key="Plugin-Xml-I18n-Drawer_Change_Notes"/>
+    </plugin-xml-i18n>
+</plugin>

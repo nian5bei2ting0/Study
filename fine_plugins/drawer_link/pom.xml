@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fr.plugin</groupId>
+    <artifactId>drawer-link</artifactId>
+    <version>1.0.12</version>
+    <packaging>jar</packaging>
+    <name>drawer-link</name>
+    <description>FineReport drawer report hyperlink plugin</description>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <fr.lib.dir>${project.basedir}/fine_jar</fr.lib.dir>
+        <fr.plugin.id>com.fr.plugin.drawer.link</fr.plugin.id>
+        <fr.plugin.pack.dir>${project.build.directory}/plugin-${fr.plugin.id}-${project.version}</fr.plugin.pack.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-core</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-core-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-cbb</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-cbb-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-report-engine</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-report-engine-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-decision</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-decision-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-report-designer</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-report-designer-11.0.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.fr</groupId>
+            <artifactId>fine-third</artifactId>
+            <version>11.0</version>
+            <scope>system</scope>
+            <systemPath>${fr.lib.dir}/fine-third-11.0.jar</systemPath>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>fine-plugin-${fr.plugin.id}-${project.version}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>pack-plugin</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${fr.plugin.pack.dir}"/>
+                                <copy file="${project.build.directory}/${project.build.finalName}.jar"
+                                      todir="${fr.plugin.pack.dir}"
+                                      overwrite="true"/>
+                                <copy file="${project.basedir}/plugin.xml"
+                                      todir="${fr.plugin.pack.dir}"
+                                      overwrite="true"/>
+                                <zip destfile="${project.build.directory}/plugin-${fr.plugin.id}-${project.version}.zip"
+                                     basedir="${project.build.directory}"
+                                     includes="plugin-${fr.plugin.id}-${project.version}/**"/>
+                                <echo message="Plugin zip: ${project.build.directory}/plugin-${fr.plugin.id}-${project.version}.zip"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
